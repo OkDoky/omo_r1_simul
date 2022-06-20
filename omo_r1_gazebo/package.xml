@@ -16,6 +16,8 @@
   <depend>nav_msgs</depend>
   <depend>tf</depend>
   <depend>gazebo_ros</depend>
+  <depend>gazebo_plugins</depend>
+  <depend>rviz</depend>
   <exec_depend>gazebo</exec_depend>
   <export>
     <gazebo_ros plugin_path="${prefix}/../../lib"/>
