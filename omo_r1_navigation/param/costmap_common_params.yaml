@@ -1,11 +1,29 @@
-obstacle_range: 11.0
-raytrace_range: 12.0
+
 
 footprint: [[-0.475, -0.355], [-0.475, 0.355], [0.201, 0.355], [0.201, -0.355]]
+footprint_padding: 0.0
 
-inflation_radius: 1.0
-cost_scaling_factor: 10.0
+global_inflation_layer: {cost_scaling_factor: 2.5, enabled: true, inflation_radius: 1.2}
 
-map_type: costmap
-observation_sources: scan
-scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+global_obstacle_layer:
+  enabled: true
+  inflation_radius: 0.2
+  laser_scan_sensor: {clearing: true, data_type: LaserScan, marking: true, topic: scan, sensor_frame: base_scan}
+  observation_sources: laser_scan_sensor
+  obstacle_range: 11.0
+  raytrace_range: 12.0
+  track_unknown_space: true
+
+local_inflation_layer: {cost_scaling_factor: 5.0, enabled: ture, inflation_radius: 1.8}
+
+local_obstacle_layer:
+  enabled: true
+  inflation_radius: 0.2
+  laser_scan_sensor: {clearing: true, data_type: LaserScan, marking: true, topic: scan, sensor_frame: base_scan}
+  observation_sources: laser_scan_sensor
+  obstacle_range: 11.0
+  raytrace_range: 12.0
+  track_unknown_space: true
+
+static_layer: {enabled: true, lethal_cost_threshold: 60, map_topic: map}
+transform_tolerance: 2.0
