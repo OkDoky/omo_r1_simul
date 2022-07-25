@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="omo_r1_sim" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find omo_r1_description)/urdf/omo_r1.urdf.xacro"/>
-  <xacro:arg name="laser_visual"  default="true"/>
+  <xacro:arg name="laser_visual"  default="false"/>
   <xacro:arg name="camera_visual" default="false"/>
   <xacro:arg name="imu_visual"    default="false"/>
 
@@ -114,10 +114,10 @@
 
   <gazebo reference="base_scan">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="yd_lidar_sensor">
+    <sensor type="gpu_ray" name="yd_lidar_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>$(arg laser_visual)</visualize>
-      <update_rate>10</update_rate>
+      <update_rate>40</update_rate>
       <ray>
         <scan>
           <horizontal>
@@ -138,7 +138,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_yd_lidar_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_yd_lidar_controller" filename="libgazebo_ros_gpu_laser.so">
         <topicName>scan</topicName>
         <frameName>base_scan</frameName>
       </plugin>

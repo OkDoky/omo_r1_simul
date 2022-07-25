@@ -105,5 +105,31 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
+
+    <!-- use actor 1 -->
+    <actor name="actor1">
+      <skin>
+        <filename>walk.dae</filename>
+      </skin>
+      <animation name="animation1">
+        <filename>walk.dae</filename> 
+      </animation>
+      <script>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>-7.02 -1.62 1. 0 0 0 </pose>
+          </waypoint>
+          <waypoint>
+            <time>5</time>
+            <pose>-6.92 -4.16 1. 0 0 1.57 </pose>
+          </waypoint>
+          <waypoint>
+            <time>10</time>
+            <pose>-7.02 -1.62 1. 0 0 0 </pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
   </world>
 </sdf>
